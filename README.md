@@ -5,14 +5,13 @@ This project aims to predict housing prices using a machine learning model. The 
 
 ### For downloading the required libraries fire this command:
 
-'''bash
-
+``` bash
 pip3 install -r requirements.txt
+```
 
-'''
 ### For running the main script fire this command:
-
-'''bash
+```bash
 python3 main.py
-'''
+```
+
 
