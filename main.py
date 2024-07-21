@@ -1,5 +1,5 @@
 import os
-from src.data_preprocessing import data_collection,handle_missing_values , outliners_remove, scaler_features, data_split
+from src.data_preprocessing import data_collection,feature_selection,feature_engineering,handle_missing_values , outliners_remove, scaler_features, data_split
 from src.train import train_model
 from src.model_evalution import model_evalute
 from src.visualization import plot_results, plot_feature_importance, plot_residuals
@@ -10,6 +10,9 @@ file_path = os.path.join('Datasets', 'Boston_Housing_Dataset.csv')
 data= data_collection(file_path)
 data = handle_missing_values(data)
 data = outliners_remove(data)
+data = feature_engineering(data)
+data = feature_selection(data)
+
 
 X = data.drop('MEDV', axis=1)
 Y= data['MEDV']

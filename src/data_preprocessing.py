@@ -21,7 +21,25 @@ def handle_missing_values(data):
     return data_imputed
 
 def outliners_remove(data):
-    return data[(np.abs(data - data.mean()) <= (3 * data.std())).all(axis=1)]
+    Q1 = data.quantile(0.25)
+    Q3 = data.quantile(0.75)
+    IQR = Q3 - Q1
+    data = data[~((data < (Q1 - 1.5 * IQR)) | (data > (Q3 + 1.5 * IQR))).any(axis=1)]
+    return data
+
+def feature_engineering(data):
+    data['RM^2'] = data['RM'] ** 2
+    data['LSTAT^2'] = data['LSTAT'] ** 2
+    return data
+
+
+def feature_selection(data):
+    correlation_matrix = data.corr().abs()
+    upper_triangle = correlation_matrix.where(np.triu(np.ones(correlation_matrix.shape), k=1).astype(bool))
+    to_drop = [column for column in upper_triangle.columns if any(upper_triangle[column] > 0.95)]
+    data = data.drop(to_drop, axis=1)
+    return data
+
 
 def scaler_features(data):
     scaler = StandardScaler()
