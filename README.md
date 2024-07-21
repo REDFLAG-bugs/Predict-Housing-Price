@@ -1,7 +1,3 @@
-Sure, here's a brief README file for your project:
-
----
-
 # Housing Price Prediction Project
 
 This project aims to predict housing prices using a machine learning model based on the [Boston Housing Dataset](https://www.kaggle.com/datasets/arunjangir245/boston-housing-dataset/data). The process includes data preprocessing, model training, evaluation, and visualization of results. The primary objective is to develop an accurate and interpretable model.
