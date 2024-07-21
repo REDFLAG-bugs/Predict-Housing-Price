@@ -2,7 +2,7 @@ import os
 from src.data_preprocessing import data_collection,handle_missing_values , outliners_remove, scaler_features, data_split
 from src.train import train_model
 from src.model_evalution import model_evalute
-from src.visualization import plot_results, plot_feature_importance
+from src.visualization import plot_results, plot_feature_importance, plot_residuals
 from src.deployment import create_app, save_model, load_model
 
 
@@ -25,5 +25,6 @@ print(f'Mean Squared Err: {mse}')
 
 plot_results(Y_test, Y_pred)
 plot_feature_importance(best_model, X.columns)
+plot_residuals(Y_test, Y_pred)
 
 save_model(best_model, scaler)
