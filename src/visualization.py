@@ -22,3 +22,11 @@ def plot_residuals(Y_test, Y_pred):
     fig = px.scatter(x=Y_test, y=residuals, title="Residuals Plot", labels={'x': 'Actual Prices', 'y': 'Residuals'})
     fig.add_hline(y=0, line_dash="dash", line_color="red")
     fig.show()
+
+
+def plot_time_series(data):
+    fig = px.line(data, title="Time Series Analysis of Housing Prices")
+    fig.update_xaxes(title_text='Time')
+    fig.update_yaxes(title_text='Price')
+    fig.update_layout(template='plotly_white')
+    fig.show()

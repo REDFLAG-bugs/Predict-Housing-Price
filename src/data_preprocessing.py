@@ -12,7 +12,7 @@ def data_collection(file_path):
 
 def handle_missing_values(data):
     imputer = SimpleImputer(strategy='mean')
-    data = data.apply(pd.to_numeric, errors='coerce')
+    data = data.apply(pd.to_numeric, errors='coerce')  #coverted all coloumns to numeric
     features = data.drop('MEDV', axis=1)
     target = data['MEDV']
     features_imputed = imputer.fit_transform(features)
@@ -46,5 +46,7 @@ def scaler_features(data):
     scale_data = scaler.fit_transform(data)
     return scale_data, scaler
 
+
+#Splited the dataset into train and test data (80/20) 
 def data_split(X,Y):
     return train_test_split(X,Y,test_size=0.2, random_state=42)

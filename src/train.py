@@ -14,7 +14,9 @@ def train_model(X_train, Y_train):
     grid_search.fit(X_train, Y_train)
     best_model = grid_search.best_estimator_
 
+    #Cross-Validation
+
     cv_scores = cross_val_score(best_model, X_train, Y_train, cv=5, scoring='neg_mean_absolute_error')
-    print(f"Cross-Validated mae: {-cv_scores.mean()}")
+    print(f"Cross-Validated mae: {-cv_scores.mean()}") 
 
     return best_model
